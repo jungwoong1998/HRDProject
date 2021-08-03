@@ -33,7 +33,9 @@ height: 30px;
 }
 </style>
 <script>
-
+function code() {
+	
+}
 </script>
 </head>
 <body>
@@ -47,7 +49,7 @@ height: 30px;
 
 <tr>
 <th class="t">상품 코드</th>
-<td><input type="text" name="id" size="30" onchange=""></td>
+<td><input type="text" name="id" size="30" onchange="javascript:code()"></td>
 
 <th class="t">주문자 이름</th>
 <td><input type="text" name="name" size="30"></td>
