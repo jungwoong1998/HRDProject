@@ -33,9 +33,16 @@ height: 30px;
 }
 </style>
 <script>
-function code() {
-	
+/*라디오버튼에 따라 카드번호창 활성화유무  */
+function pay_select_cash() {
+	const target = document.getElementById("no_card");
+	target.disabled = true;
 }
+function pay_select_card() {
+	const target = document.getElementById("no_card");
+	target.disabled = false;
+}
+
 </script>
 </head>
 <body>
@@ -49,7 +56,7 @@ function code() {
 
 <tr>
 <th class="t">상품 코드</th>
-<td><input type="text" name="id" size="30" onchange="javascript:code()"></td>
+<td><input type="text" name="id" size="30" ></td>
 
 <th class="t">주문자 이름</th>
 <td><input type="text" name="name" size="30"></td>
@@ -70,12 +77,12 @@ function code() {
 <tr>
 <th class="t">결제방법</th>
 <td>
-<input type="radio" name="pay" value="cash">현금
-<input type="radio" name="pay" value="card">카드
+<input type="radio" name="pay" value="cash"  onclick="pay_select_cash()">현금
+<input type="radio" name="pay" value="card" onclick="pay_select_card()">카드
 </td>
 
 <th class="t">카드번호</th>
-<td><input type="text" name="pay_card" size="30"></td>
+<td><input type="text" name="cardno" size="30" id="no_card" ></td>
 </tr>
 
 <tr>
