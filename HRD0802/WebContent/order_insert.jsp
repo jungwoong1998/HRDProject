@@ -41,8 +41,17 @@ function pay_select_cash() {
 function pay_select_card() {
 	const target = document.getElementById("no_card");
 	target.disabled = false;
+	alert("카드번호를 입력하세요.");
+	document.form.cardno.focus();
 }
-
+function changesubmit() {
+	document.form.submit();
+}
+function btn_check(str) {
+	if(str=="insert"){
+		form.action="order_insert_process.jsp";
+	}
+}
 </script>
 </head>
 <body>
@@ -51,12 +60,69 @@ function pay_select_card() {
 <section>
 <%@include file = "dbconn.jsp" %>
 <h2>주문정보 등록</h2>
-<form name="form" method="post" action="product_insert_process.jsp">
+<form name="form" method="post" action="order_insert.jsp">
 <table border="1" id="t">
+<%
+PreparedStatement pstmt = null;
+ResultSet rs = null;
+String id = request.getParameter("id");
+String name = request.getParameter("name");
+String orderdate = request.getParameter("orderdate");
+String tel = request.getParameter("tel");
+String addr = request.getParameter("addr");
+String pay = request.getParameter("pay");
+String cardno = request.getParameter("cardno");
+String prodcount = request.getParameter("prodcount");
 
+int price =0, total=0, pcount=0;
+if(name==null||name.equals("null")){
+	name="";
+}if(orderdate==null||name.equals("null")){
+	name="";
+}if(addr==null||addr.equals("null")){
+	addr="";
+}if(pay==null||pay.equals("null")){
+	pay="";
+}if(tel==null||tel.equals("null")){
+	tel="";
+}if(cardno==null||cardno.equals("null")){
+	cardno="";
+}if(prodcount==null||prodcount.equals("null")){
+	pcount=0;
+}else{
+	pcount=Integer.parseInt(prodcount);
+}
+try{
+	String sql = "select id,downprice from product0802 where id=?";
+	pstmt = conn.prepareStatement(sql);
+	pstmt.setString(1, id);
+	rs = pstmt.executeQuery();
+	
+	if(rs.next()){
+		id = rs.getString(1);
+		price = rs.getInt(2);
+		total = price*pcount;
+		
+	}else if(id==null|| id.equals("null")){
+		id="";
+	}else{
+		id="";
+		price = 0;
+		total=0;
+		%>
+		<script>
+		alert("등록되지 않은 코드입니다.");
+		history.back(-1);
+		</script>
+		<%
+	}
+}catch(SQLException e){
+	e.printStackTrace();
+}
+%>
 <tr>
 <th class="t">상품 코드</th>
-<td><input type="text" name="id" size="30" ></td>
+<td><input type="text" name="id" size="30" value="<%=id %>" onchange="javascript:changesubmit();" ></td>
 
 <th class="t">주문자 이름</th>
 <td><input type="text" name="name" size="30"></td>
@@ -90,13 +156,13 @@ function pay_select_card() {
 <td><input type="text" name="prodcount" size="30"></td>
 
 <th class="t">주문금액</th>
-<td><input type="text" name="total" size="30"></td>
+<td><input type="text" name="total" size="30" value="<%=total%>"></td>
 </tr>
 
 <tr>
 <td colspan="4" id="bw">
-<a href="order_select.jsp"><input type="button" value="목록" class="bw_sw"></a>
-<input type="submit" value="저장" class="bw_sw" onclick="javascript:check()">
+<a href="order_select.jsp"><button type="button" onclick="history.back(); return false;" class="bw_sw">목록</button></a>
+<button type="submit" class="bw_sw" onclick="btn_check("insert");">저장</button>
 </td>
 </table>
 </form>
