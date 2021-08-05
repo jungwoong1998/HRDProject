@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>주문정보등록</title>
+<title>주문정보 수정화면</title>
 <style>
 #t{
 margin: 0 auto;
@@ -33,7 +33,6 @@ height: 30px;
 }
 </style>
 <script>
-/*라디오버튼에 따라 카드번호창 활성화유무  */
 function pay_select_cash() {
 	const target = document.getElementById("no_card");
 	target.disabled = true;
@@ -48,8 +47,8 @@ function changesubmit() {
 	document.form.submit();
 }
 function btn_check(str) {
-	if(str=="insert"){
-		form.action="order_insert_process.jsp";
+	if(str=="update"){
+		form.action="order_update_process.jsp";
 	}
 }
 </script>
@@ -59,12 +58,14 @@ function btn_check(str) {
 <nav><%@include file  =  "nav.jsp" %></nav>
 <section>
 <%@include file = "dbconn.jsp" %>
-<h2>주문정보 등록</h2>
-<form name="form" method="post" action="order_insert.jsp">
+<h2>주문정보 수정</h2>
+<form name="form" method="post" action="order_update_prcess.jsp">
 <table border="1" id="t">
-<%
+<% 
+request.setCharacterEncoding("utf-8");
 PreparedStatement pstmt = null;
 ResultSet rs = null;
+
 String id = request.getParameter("id");
 String name = request.getParameter("name");
 String orderdate = request.getParameter("orderdate");
@@ -73,53 +74,24 @@ String addr = request.getParameter("addr");
 String pay = request.getParameter("pay");
 String cardno = request.getParameter("cardno");
 String prodcount = request.getParameter("prodcount");
+String total = request.getParameter("total");
 
-int price =0, total=0, pcount=0;
-if(name==null||name.equals("null")){
-	name="";
-}if(orderdate==null||name.equals("null")){
-	name="";
-}if(addr==null||addr.equals("null")){
-	addr="";
-}if(pay==null||pay.equals("null")){
-	pay="";
-}if(tel==null||tel.equals("null")){
-	tel="";
-}if(cardno==null||cardno.equals("null")){
-	cardno="";
-}if(prodcount==null||prodcount.equals("null")){
-	pcount=0;
-}else{
-	pcount=Integer.parseInt(prodcount);
-}
-try{
-	String sql = "select id,downprice from product0802 where id=?";
-	pstmt = conn.prepareStatement(sql);
-	pstmt.setString(1, id);
-	rs = pstmt.executeQuery();
-	
-	if(rs.next()){
-		id = rs.getString(1);
-		price = rs.getInt(2);
-		total = price*pcount;
-		
-	}else if(id==null|| id.equals("null")){
-		id="";
-	}else{
-		id="";
-		price = 0;
-		total=0;
-		%>
-		<script>
-		alert("등록되지 않은 코드입니다.");
-		history.back(-1);
-		</script>
-		<%
-	}
-}catch(SQLException e){
-	e.printStackTrace();
+String sql = "select * from order0802";
+pstmt=conn.prepareStatement(sql);
+rs = pstmt.executeQuery();
+if(rs.next()){
+	id = rs.getString(1);
+	name = rs.getString(2);
+	orderdate = rs.getString(3);
+	tel = rs.getString(4);
+	addr = rs.getString(5);
+	pay = rs.getString(6);
+	cardno = rs.getString(7);
+	prodcount = rs.getString(8);
+	total = rs.getString(9);
 }
 %>
+
 <tr>
 <th class="t">상품 코드</th>
 <td><input type="text" name="id" size="30" value="<%=id %>" ></td>
@@ -161,8 +133,7 @@ try{
 
 <tr>
 <td colspan="4" id="bw">
-<a href="order_select.jsp"><button type="button" onclick="history.back(); return false;" class="bw_sw">목록</button></a>
-<button type="submit" class="bw_sw" onclick="btn_check('insert');">저장</button>
+<button type="submit" class="bw_sw" onclick="btn_check('update');">저장</button>
 </td>
 </table>
 </form>

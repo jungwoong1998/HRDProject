@@ -43,7 +43,7 @@ PreparedStatement pstmt = null;
 ResultSet rs = null;
 
 int mun = 0;
-String sql = "select count(*) from product0802";
+String sql = "select count(*) from order0802";
 pstmt = conn.prepareStatement(sql);
 rs=pstmt.executeQuery();
 
@@ -54,42 +54,44 @@ if(rs.next()){
 <p>총 <%=mun %>개의 상품이 있습니다.</p><hr>
 <table border="1" id="t">
 <tr>
-<th>상품코드</th><th>상품분류</th><th>작성자 이름</th><th>상품이름</th><th>제조사 이름</th>
-<th>시중가격</th><th>판매가격</th><th>날짜</th><th>재고량</th><th>메모</th>
+<th>상품코드</th><th>주문자이름</th><th>주문날짜</th><th>배달주소</th><th>전화번호</th>
+<th>결제방법</th><th>카드번호</th><th>주문상품수</th><th>판매가격</th><th>총금액</th>
 <th>구분</th>
 </tr>
 <%
 try{
-	sql = "select * from product0802";
+	sql = "select a.id,b.name,b.orderdate,b.addr,b.tel,b.pay,b.cardno,b.prodcount,b.total from product0802 a,order0802 b where a.id=b.id order by id asc";
 	pstmt = conn.prepareStatement(sql);
 	rs = pstmt.executeQuery();
+	int allsum=0;
 	
 	while(rs.next()){
 		String id = rs.getString(1);
-		String category = rs.getString(2);
-		String wname = rs.getString(3);
-		String pname = rs.getString(4);
-		String sname = rs.getString(5);
-		String price = rs.getString(6);
-		String downprice = rs.getString(7);
-		String inputdate = rs.getString(8);
-		String stock = rs.getString(9);
-		String description = rs.getString(10);
+		String name = rs.getString(2);
+		String orderdate = rs.getString(3);
+		String tel = rs.getString(4);
+		String addr = rs.getString(5);
+		String pay = rs.getString(6);
+		String cardno = rs.getString(7);
+		String prodcount = rs.getString(8);
+		String total = rs.getString(9);
+		allsum = (rs.getInt(9)+allsum);
 		%>
 		<tr>
 		<td class="t"><%=id %></td>
-		<td class="t"><%=category %></td>
-		<td class="t"><%=wname %></td>
-		<td class="t"><%=pname %></td>
-		<td class="t"><%=sname %></td>
-		<td class="t"><%=price %></td>
-		<td class="t"><%=downprice %></td>
-		<td class="t"><%=inputdate %></td>
-		<td class="t"><%=stock %></td>
-		<td class="t"><%=description %></td>
+		<td class="t"><%=name %></td>
+		<td class="t"><%=orderdate %></td>
+		<td class="t"><%=tel %></td>
+		<td class="t"><%=addr %></td>
+		<td class="t"><%=pay %></td>
+		<td class="t"><%=cardno %></td>
+		<td class="t"><%=prodcount %></td>
+		<td class="t"><%=total %></td>
+		<td class="t"><%=allsum %></td>
 		<td class="t">
-		<a href="product_update.jsp?id=<%=id %>">수정</a> / 
-		<a href="product_delete.jsp?id=<%=id %>" onclick="if(!confirm("정말로 삭제하시겠습니까?"))return false;">삭제</a>
+		<a href="order_update.jsp?id=<%=id %>">수정</a> / 
+		<a href="order_delete.jsp?id=<%=id %>" onclick="if(!confirm("정말로 삭제하시겠습니까?"))return false;">삭제</a>
+		</td>
 		</tr>
 		<%
 	}
@@ -99,7 +101,7 @@ try{
 }
 %>
 </table>
-<a href="product_insert.jsp"><button id="bw">작성</button></a>
+<a href="order_insert.jsp"><button id="bw">작성</button></a>
 </section>
 <footer><%@include file = "footer.jsp" %></footer>
 </body>
