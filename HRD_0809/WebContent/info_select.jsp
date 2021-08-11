@@ -37,14 +37,18 @@ while(rs.next()){
 	
 	String id = rs.getString(1);
 	String name = rs.getString(2);
-	String position = rs.getString(3);
-	String dept = rs.getString(4);
+	String position = rs.getString(4);
+	String dept = rs.getString(3);
 	if(dept.equals("10")){
 		dept = "인사부";
 	}else if(dept.equals("20")){
 		dept = "기획부";
 	}else if(dept.equals("30")){
-		dept = ""
+		dept = "홍보부";
+	}else if(dept.equals("40")){
+		dept = "영업부";
+	}else if(dept.equals("50")){
+		dept = "경리부";
 	}
 	String duty = rs.getString(5);
 	String phone = rs.getString(6);
@@ -53,12 +57,12 @@ while(rs.next()){
 	%>
 	<tr>
 	<td><%=no %></td>
-	<td><%=id %></td>
+	<td><a href="info_update.jsp?id=<%=id %>"><%=id %></a></td>
 	<td><%=name %></td>
-	<td><%=dept %></td>
 	<td><%=position %></td>
 	<td><%=duty %></td>
 	<td><%=phone %></td>
+	<td><%=dept %></td>
 	<td><%=address %></td>
 	<%
 	
