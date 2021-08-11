@@ -50,8 +50,8 @@ try{
 		<td class="sum2"><%=gitasudang %></td>
 		<td class="sum2"><%=sum %></td>
 		<td class="sum1">
-		<a href="sudang_update.jsp?=id=<%=id %>">수정</a> /
-		<a href="sudang_delete.jsp?=id=<%=id %>" onclick="if(!confirm("삭제하시겠습니까?"))return false;">삭제</a>
+		<a href="sudang_update.jsp?id=<%=id %>">수정</a> /
+		<a href="sudang_delete.jsp?id=<%=id %>" onclick="if(!confirm("삭제하시겠습니까?"))return false;">삭제</a>
 		</td>
 		</tr>
 		<%

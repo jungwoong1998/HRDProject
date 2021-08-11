@@ -30,3 +30,6 @@ try{
 	e.printStackTrace();
 }
 %>
+<script>
+history.back();
+</script>

@@ -8,11 +8,11 @@
 <body>
 <b><ul>
 <a href = "info_insert.jsp"><li>사원등록</a></li>
-<li>호봉등록</li>
-<li>수당등록</li>
+<a href = "hobong_insert.jsp"><li>호봉등록</a></li>
+<a href ="sudang_insert.jsp"><li>수당등록</a></li>
 <a href="info_select.jsp"><li>사원정보</a></li>
-<li>호봉정보</li>
-<li>수당정보</li>
+<a href="hobong_select.jsp"><li>호봉정보</a></li>
+<a href="sudang_select.jsp"><li>수당정보</a></li>
 <li>종료</li>
 <li>홈으로</li>
 </ul>
