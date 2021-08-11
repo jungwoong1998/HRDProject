@@ -28,7 +28,7 @@ pstmt = conn.prepareStatement(sql);
 rs = pstmt.executeQuery();
 
 try{
-sql = "select * from hobong0809";
+sql = "select dunggub,to_char(salary,'999,999,999') from hobong0809";
 pstmt = conn.prepareStatement(sql);
 rs = pstmt.executeQuery();
 
