@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>수당 정보 조회</title>
+<title>급여 정보 조회</title>
 </head>
 <body>
 <header><%@include file = "header.jsp" %></header>
@@ -13,7 +13,7 @@
 <section>
 <h1>급여 정보 조회</h1>
 <%@include file = "dbconn.jsp" %>
-<table border="1" id="t6"><hr>
+<table border="2" id="t6"><hr>
 <tr>
 <th>no</th> <th>사원번호</th> <th>이름</th> <th>급여</th> <th>가족수당</th>
 <th>직책수당</th> <th>근속수당</th> <th>기타수당</th> <th>수당합계</th>
@@ -24,7 +24,7 @@ PreparedStatement pstmt = null;
 ResultSet rs = null;
 int no=0;
 try{
-	String sql = "select c.id,a.name,to_char(b.salary,'999,999,999'),to_char(c.gajok,'999,999'),to_char(c.jikchak,'999,999'),to_char(c.gunsok,'999,999'),to_char(c.gitasudang,'999,999') ,to_char((c.gajok+c.jikchak+c.gunsok+c.gitasudang),'999,999,999') from info0809 a,hobong0809 b,sudnag0809 c where a.id=c.id and a.position=b.dunggub";
+	String sql = "select c.id,a.name,to_char(b.salary,'999,999,999'),to_char(c.gajok,'999,999'),to_char(c.jikchak,'999,999'),to_char(c.gunsok,'999,999'),to_char(c.gitasudang,'999,999') ,to_char((b.salary+c.gajok+c.jikchak+c.gunsok+c.gitasudang),'999,999,999') from info0809 a,hobong0809 b,sudnag0809 c where a.id=c.id and a.position=b.dunggub";
 	pstmt=conn.prepareStatement(sql);
 	rs=pstmt.executeQuery();
 	
@@ -49,6 +49,10 @@ try{
 		<td class="sum2"><%=gunsok %></td>
 		<td class="sum2"><%=gitasudang %></td>
 		<td class="sum2"><%=sum %></td>
+		<td class="sum1">
+		<a href="sudang_update.jsp?=id=<%=id %>">수정</a> /
+		<a href="sudang_delete.jsp?=id=<%=id %>" onclick="if(!confirm("삭제하시겠습니까?"))return false;">삭제</a>
+		</td>
 		</tr>
 		<%
 	}

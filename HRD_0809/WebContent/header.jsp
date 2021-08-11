@@ -23,6 +23,7 @@ section ol{padding-left: 2%;}
 
 footer{height: 10%; text-align: center; background-color: #bdbdbd; color: white; line-height: 60px;}
 
+a{text-decoration: none;}
 /*등록 스타일  */
 section h1{text-align: center; line-height: 60px;}
 #t1{margin: 0 auto; height: 300px; width: 600px;}
