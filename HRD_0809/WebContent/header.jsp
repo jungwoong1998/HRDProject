@@ -32,8 +32,14 @@ section h1{text-align: center; line-height: 60px;}
 #btn_a{text-align: center;}
 .btn_a1{height: 25px; width: 100px; margin-left: 1%;}
 
+#t3{margin: 0 auto; height: 100px; width: 600px;}
+.s3{width: 150px; height: 25px;}
 /*조회 스타일 */
 #t2{margin: 0 auto; height: 300px; width: 1000px;}
+#t4{margin: 0 auto; height: 200px; width: 500px;}
+#t6{margin: 0 auto; height: 100px; width: 1000px;}
+.sum1{text-align: center;}
+.sum2{text-align: right;}
 </style>
 </head>
 <body>
