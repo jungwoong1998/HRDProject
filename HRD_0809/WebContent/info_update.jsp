@@ -37,6 +37,12 @@ pstmt = conn.prepareStatement(sql);
 pstmt.setString(1, id);
 rs = pstmt.executeQuery();
 
+if(rs.next()){
+	String name = rs.getString(2);
+	String duty = rs.getString(5);
+	String phone = rs.getString(6);
+	String address = rs.getString(7);
+
 %>
 <tr>
 <th>사원번호(자동생성)</th>
@@ -45,12 +51,12 @@ rs = pstmt.executeQuery();
 
 <tr>
 <th>성명</th>
-<td><input type="text" name="name"  class="f1" size="30"></td>
+<td><input type="text" name="name"  class="f1" size="30" value="<%=name %>"></td>
 </tr>
 
 <tr>
 <th>소속부서</th>
-<td><select name="dept" class="s1">
+<td><select name="dept" class="s1" >
 <option value="10">인사부</option>
 <option value="20">기획부</option>
 <option value="30">홍보부</option>
@@ -72,19 +78,21 @@ rs = pstmt.executeQuery();
 
 <tr>
 <th>직책</th>
-<td><input type="text" name="duty"  class="f1" size="30"></td>
+<td><input type="text" name="duty"  class="f1" size="30" value="<%=duty %>" ></td>
 </tr>
 
 <tr>
 <th>연락처</th>
-<td><input type="text" name="phone"  class="f1" size="30"></td>
+<td><input type="text" name="phone"  class="f1" size="30" value="<%=phone %>" ></td>
 </tr>
 
 <tr>
 <th>주소</th>
-<td><input type="text" name="address"  class="f1" size="30"></td>
+<td><input type="text" name="address"  class="f1" size="30" value="<%=address %>"></td>
 </tr>
-
+<% 
+}
+%>
 <tr>
 <td colspan="2" id="btn_a">
 <input type="button" value="등록" onclick="javascript:check()" class="btn_a1">
