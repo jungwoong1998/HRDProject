@@ -23,9 +23,8 @@
 PreparedStatement pstmt = null;
 ResultSet rs = null;
 int no=0;
-int sum =0;
 try{
-	String sql = "select c.id,a.name,to_char(b.salary,'999,999'),c.gajok,c.jikchak,c.gunsok,c.gitasudang from info0809 a,hobong0809 b,sudnag0809 c where a.id=c.id and a.position=b.dunggub";
+	String sql = "select c.id,a.name,to_char(b.salary,'999,999,999'),to_char(c.gajok,'999,999'),to_char(c.jikchak,'999,999'),to_char(c.gunsok,'999,999'),to_char(c.gitasudang,'999,999') ,to_char((c.gajok+c.jikchak+c.gunsok+c.gitasudang),'999,999,999') from info0809 a,hobong0809 b,sudnag0809 c where a.id=c.id and a.position=b.dunggub";
 	pstmt=conn.prepareStatement(sql);
 	rs=pstmt.executeQuery();
 	
@@ -37,7 +36,7 @@ try{
 		String jikchak = rs.getString(5);
 		String gunsok = rs.getString(6);
 		String gitasudang = rs.getString(7);
-		sum=(rs.getInt(3)+rs.getInt(4)+rs.getInt(5)+rs.getInt(6)+rs.getInt(7));
+	    String sum= rs.getString(8);
 		no++;
 		%>
 		<tr>
