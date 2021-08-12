@@ -72,7 +72,7 @@ try{
 		<td class="cour2"><%=end %></td>
 		<td class="cour2">
 		<a href="update_subject.jsp?id=<%=id %>">수정</a>
-		/ <a href="delete_course.jsp?id=<%=id%>" onclick="if(confirm('정말로 삭제하시겠습니까?'))return false;">삭제</a></td>
+		/ <a href="delete_course.jsp?id=<%=id%>" onclick="if(!confirm('정말로 삭제하시겠습니까?'))return false;">삭제</a></td>
 		</tr>
 		<%
 	}
