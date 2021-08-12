@@ -63,13 +63,13 @@ String id = request.getParameter("id");
 <th>담 당 강 사</th>
 <td><select name="lect">
 <option checked >담당강사 선택</option>
-<option value="1">김교수</option>
-<option value="2">이교수</option>
-<option value="3">박교수</option>
-<option value="4">우교수</option>
-<option value="5">최교수</option>
-<option value="6">강교수</option>
-<option value="7">황교수</option>
+<option value="1" <%if(lect.equals("1")){%>selected<%} %>>김교수</option>
+<option value="2" <%if(lect.equals("2")){%>selected<%} %>>이교수</option>
+<option value="3" <%if(lect.equals("3")){%>selected<%} %>>박교수</option>
+<option value="4" <%if(lect.equals("4")){%>selected<%} %>>우교수</option>
+<option value="5" <%if(lect.equals("5")){%>selected<%} %>>최교수</option>
+<option value="6" <%if(lect.equals("6")){%>selected<%} %>>강교수</option>
+<option value="7" <%if(lect.equals("7")){%>selected<%} %>>황교수</option>
 </select>
 </td>
 </tr>
@@ -77,12 +77,12 @@ String id = request.getParameter("id");
 <tr>
 <th>요 일</th>
 <td class="ra1">
-<input type="radio" style="vertical-align:-4px" name="week" value="1" checked> 월
-<input type="radio" style="vertical-align:-4px" name="week" value="2" > 화
-<input type="radio" style="vertical-align:-4px" name="week" value="3" > 수
-<input type="radio" style="vertical-align:-4px" name="week" value="4" > 목
-<input type="radio" style="vertical-align:-4px" name="week" value="5" > 금
-<input type="radio" style="vertical-align:-4px" name="week" value="6" > 토
+<input type="radio" style="vertical-align:-4px" name="week" value="1" <%if(week.equals("1")){%>checked<%} %>> 월
+<input type="radio" style="vertical-align:-4px" name="week" value="2" <%if(week.equals("2")){%>checked<%} %>> 화
+<input type="radio" style="vertical-align:-4px" name="week" value="3" <%if(week.equals("3")){%>checked<%} %>> 수
+<input type="radio" style="vertical-align:-4px" name="week" value="4" <%if(week.equals("4")){%>checked<%} %>> 목
+<input type="radio" style="vertical-align:-4px" name="week" value="5" <%if(week.equals("5")){%>checked<%} %>> 금
+<input type="radio" style="vertical-align:-4px" name="week" value="6" <%if(week.equals("6")){%>checked<%} %>> 토
 </td>
 </tr>
 

@@ -36,6 +36,7 @@ button{position: relative; top:450px; left: 950px;}
 .stud2{text-align: center;}
 #stu{position: relative; top:350px; left: 950px;}
 .btn{height: 30px; width: 150px; background-color: #1C1C1C; color: white;}
+
 /*입력 스타일*/
 #insert1{margin: 0 auto; height: 350px; width: 600px;}
 #insert2{margin: 0 auto; height: 300px; width: 700px;}
