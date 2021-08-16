@@ -67,7 +67,7 @@ if(rs.next()){
 
 <tr>
 <td colspan="2" id="btn_in">
-<input type="button" value="목록" class="btn_i2">
+<a href="lect_select.jsp"><input type="button" value="목록" class="btn_i2"></a>
 <input type="button" value="등록" class="btn_i2" onclick="javascript:check()">
 </td>
 </tr>
