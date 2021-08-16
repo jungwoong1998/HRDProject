@@ -49,7 +49,7 @@ try{
 		<td class="lect2" style="width: 300px;"><%=name %></td>
 		<td class="lect2"><%=major %></td>
 		<td class="lect2" style="width: 250px;"><%=field %></td>
-		<td class="lect2">
+		<td class="lect2"><!--수정/삭제 링크걸때 jsp확장자 다음 해당 테이블의 기본키를 명시해야 수정문/삭제문에서 키값을 가져올수 있음.  -->
 		<a href="update_lect.jsp?idx=<%=idx%>">수정</a> / 
 		<a href="delete_lect.jsp?idx=<%=idx%>" onclick="if(!confirm('정말로 삭제하시겠습니까?'))return false;">삭제</a>
 		</tr>
