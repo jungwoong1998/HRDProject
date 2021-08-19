@@ -7,10 +7,10 @@
 </head>
 <body>
 <ul>
-<li>조회</li>
-<li>사원등록</li>
-<li>정보변경</li>
-<li>퇴사처리</li>
+<a href="person_select.jsp"><li>조회</a></li>
+<a href="person_insert.jsp"><li>사원등록</a></li>
+<a href="update_person.jsp"><li>정보변경</a></li>
+<a href="delete_person.jsp"><li>퇴사처리</a></li>
 <li>종료</li>
 <a href="index.jsp"><li>홈으로</a></li>
 </ul>
