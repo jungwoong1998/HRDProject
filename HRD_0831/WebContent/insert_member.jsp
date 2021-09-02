@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
- <%@ page import ="java.sql.*" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -17,18 +16,19 @@ function check() {
 	}else if(document.form.password.value==""){
 		alert("비밀번호를 입력하세요.");
 		document.form.password.focus();
-	}else{
-		document.form.submit();
+	}else {
+		form.action = "insert_member_process.jsp"
 	}
 }
 function idck() {
-		document.form.id.value();
+	document.form.submit();
 }
 </script>
 <style>
 h1{text-align: center;}
 #in_t{margin: 0 auto; width: 800px; height: 400px;}
 input,text{height: 30px;}
+#btn_i{text-align: center;}
 </style>
 </head>
 <body>
@@ -59,7 +59,7 @@ if(rs.next()){
 	<%
 }
 %>
-<td><input type="text" name="id" size="30" onchange="idck()"></td>
+<td><input type="text" name="id" size="30" ></td>
 </tr>
 
 <tr>
@@ -89,7 +89,7 @@ if(rs.next()){
 <th>이메일</th>
 <td>
 <input type="text" name="email1" size="30">@
-<select name="email2" style="width: 100px; height: 25px;">
+<select name="email2" style="width: 100px; height: 30px;">
 <option value="naver.com">naver.com</option>
 <option value="gmail.com">gmail.com</option>
 <option value="hanmail.net">hanmail.net</option>
@@ -121,7 +121,7 @@ if(rs.next()){
 </tr>
 
 <tr>
-<td colspan="2">
+<td colspan="2" id="btn_i">
 <input type="button" value="회원등록" onclick="javascript:check()">
 <input type="reset" value="다시작성">
 </td>

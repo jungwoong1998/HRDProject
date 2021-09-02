@@ -8,9 +8,9 @@
 <body>
 <ul>
 <a href="insert_member.jsp"><li>회원 정보 등록</a></li>
-<li>상품정보 등록</li>
-<li>회원 정보 목록</li>
-<li>상품정보 목록</li>
+<a href="insert_product.jsp"><li>상품정보 등록</a></li>
+<a href="select_member.jsp"><li>회원 정보 목록</a></li>
+<a href="select_product.jsp"><li>상품정보 목록</a></li>
 <a href="index.jsp"><li>홈으로</a></li>
 </ul>
 </body>
