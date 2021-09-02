@@ -59,7 +59,7 @@ if(rs.next()){
 	<%
 }
 %>
-<td><input type="text" name="id" size="30" ></td>
+<td><input type="text" name="id" size="30" onchange="javascript:idck()" value="<%=id %>"></td>
 </tr>
 
 <tr>
@@ -122,7 +122,7 @@ if(rs.next()){
 
 <tr>
 <td colspan="2" id="btn_i">
-<input type="button" value="회원등록" onclick="javascript:check()">
+<input type="submit" value="회원등록" onclick="javascript:check()">
 <input type="reset" value="다시작성">
 </td>
 </tr>
