@@ -12,7 +12,7 @@ header{height: 15%; background-color: #00afff; color: white; text-align: center;
 					font-weight: 600;}
 nav{height: 5%; background-color: #457120; color: white;}
 nav ul{list-style-type: none;}
-nav li{display: inline; padding: 0 0 0 8%; line-height: 30px; font-weight: 600;}		
+nav li{display: inline; padding: 0 1% 0 6%; line-height: 30px; font-weight: 600;}		
 section{height: 70%;}
 section h3{padding-left: 2%;}
 section p{padding-left: 2%;}

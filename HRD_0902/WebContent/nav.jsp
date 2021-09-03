@@ -10,6 +10,7 @@
 <li>조회</li>
 <a href="info_insert.jsp"><li>사원등록</a></li>
 <a href="hobong_insert.jsp"><li>호봉등록</a></li>
+<a href="insertSudang.jsp"><li>수당등록</a></li>
 <a href="info_select.jsp"><li>사원정보</a></li>
 <a href="hobong_select.jsp"><li>호봉정보</a></li>
 <li>종료</li>
