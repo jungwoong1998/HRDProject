@@ -28,7 +28,7 @@ ResultSet rs = null;
 int no=0;
 
 try{
-	String sql = "select * from hobong0902";
+	String sql = "select dunggub,to_char(salary,'9,999,999') from hobong0902";
 	pstmt = conn.prepareStatement(sql);
 	rs=pstmt.executeQuery();
 	
