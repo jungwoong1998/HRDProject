@@ -8,7 +8,7 @@
 <title>수당정보 등록</title>
 <style>
 h1{text-align: center; font-weight: 600; font-family: 'hy견고딕'; line-height: 60px;}
-#in_t{margin: 0 auto;  width: 600px; height: 100px;}
+#in_t{margin: 0 auto;  width: 650px; height: 100px;}
 input,text{height: 30px;}
 #btn_i{text-align: center;}
 .btn_a{width: 90px; height: 30px; font-size: 12pt;}
@@ -31,9 +31,9 @@ function check() {
 		alert("기타수당을 입력하세요.");
 		document.form.gitasudang.focus();
 	}else{
-		form action="insertSudang_process.jsp";
+		form.action="insertSudang_process.jsp";
 	}
-}
+} 
 function idck() {
 	document.form.submit();
 }
@@ -53,34 +53,32 @@ ResultSet rs = null;
 request.setCharacterEncoding("utf-8");
 
 String id = request.getParameter("id");
-
+String name = null;
 String sql = "select * from info0902 where id=?";
 pstmt = conn.prepareStatement(sql);
 pstmt.setString(1, id);
 rs = pstmt.executeQuery();
-
+// 지역변수는 tr이 시작하기 전에 끝내야 테이블을 불러올수 있음
+//if 다음 사원번호가 없을때 스크립트가 작동해야 되므로 else를 사용.
 if(rs.next()){
+	 name = rs.getString(2);
+}else{
 	%>
 	<script>
 	alert("등록되어 있지 않는 사원번호 입니다.");
 	</script>
 	<%
-}
+	 }
+
 %>
 <tr>
 <th style="width: 100px; background-color: #F5F6CE">사원번호</th>
 <td><input type="text" name="id" size="20" onchange="javascript:idck()" value="<%=id%>"></td>
-<%
-if(rs.next()){
-	String name = rs.getString(2);
 
-%>
 <th style="width: 100px; background-color: #F5F6CE">이름</th>
-<td><input type="text" name="name" size="20" value="<%=name%>"></td>
+<td><input type="text"  size="20" value="<%=name %>"></td>
 </tr>
-<%
-}
-%>
+
 <tr>
 <th style="width: 100px; background-color: #F5F6CE">가족수당</th>
 <td><input type="text" name="gajok" size="20"></td>
