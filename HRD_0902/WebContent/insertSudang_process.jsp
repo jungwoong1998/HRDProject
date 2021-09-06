@@ -7,23 +7,19 @@ PreparedStatement pstmt=null;
 request.setCharacterEncoding("utf-8");
 
 String id =request.getParameter("id");
-String name = request.getParameter("name");
-String dept = request.getParameter("dept");
-String position = request.getParameter("position");
-String duty = request.getParameter("duty");
-String phone = request.getParameter("phone");
-String address = request.getParameter("address");
+String gajok = request.getParameter("gajok");
+String jikchak = request.getParameter("jikchak");
+String gunsok = request.getParameter("gunsok");
+String gitasudang = request.getParameter("gitasudang");
 
 try{
-	String sql = "insert into sudang0902 values(?,?,?,?,?,?,?)";
+	String sql = "insert into sudang0902 values(?,?,?,?,?)";
 	pstmt = conn.prepareStatement(sql);
 	pstmt.setString(1, id);
-	pstmt.setString(2, name);
-	pstmt.setString(3, dept);
-	pstmt.setString(4, position);
-	pstmt.setString(5, duty);
-	pstmt.setString(6, phone);
-	pstmt.setString(7, address);
+	pstmt.setString(2, gajok);
+	pstmt.setString(3, jikchak);
+	pstmt.setString(4, gunsok);
+	pstmt.setString(5, gitasudang);
 	pstmt.executeUpdate();
 }catch(SQLException e){
 	e.printStackTrace();
