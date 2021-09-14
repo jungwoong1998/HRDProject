@@ -8,8 +8,13 @@
 <title>add화면</title>
 <script type="text/javascript">
 function mail_cng() {
-	document.form.mail2.value==document.form.mail_cng.value;
-	
+	if(document.form.mail.options[document.form.mail.selectboxIndex].value=='0'){
+		document.form.mail2.disabled=true;
+		document.form.mail2.value="";
+	}if(docuemnt.form.mail.options[document.form.mail.selectboxIndex].value=='9'){
+		document.form.mail2.disabled=false;
+		document.form.mail2.value="";
+	}
 }
 </script>
 </head>
@@ -98,8 +103,8 @@ if(rs.next()){
 <tr>
 <th>이메일</th>
 <td>
-<input type="text" name="mail1" value="이메일">@<input type="text" name="mail2" id="<%=mail2 %>">
-<select name="mail_cng" onchange="javascript:mail_cng();" id="<%=mail_cng %>">
+<input type="text" name="mail1" value="이메일">@<input type="text" name="mail2" disabled>
+<select name="mail_cng" onchange="mail_cng()" >
 <option value="">선택하세요</option>
 <option value="gmail.com">gmail.com</option>
 <option value="naver.com">naver.com</option>
