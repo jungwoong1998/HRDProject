@@ -7,13 +7,38 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>add화면</title>
 <script type="text/javascript">
-function mail_cng() {
-	if(document.form.mail.options[document.form.mail.selectboxIndex].value=='0'){
-		document.form.mail2.disabled=true;
-		document.form.mail2.value="";
-	}if(docuemnt.form.mail.options[document.form.mail.selectboxIndex].value=='9'){
-		document.form.mail2.disabled=false;
-		document.form.mail2.value="";
+function mail_chang() {
+	if(document.form.mail.options[document.form.mail.selectedIndex].value=='0'){
+		document.form.mail2.disabled = true;
+		document.form.mail2.value = "";
+		//인덱스 0번에 해당하는 것에 값이 들어가면 메일2은 비활성화됨
+	}
+	if(document.form.mail.options[document.form.mail.selectedIndex].value=='9'){
+		document.form.mail2.disabled = false;
+		document.form.mail2.value = "";
+		document.form.mail2.focus();
+		//인덱스 9번에 해당하는 것에 값이 들어가면 메일2은 활성화되고 포커스됨
+	}else{
+		document.form.mail2.disabled = true;
+		document.form.mail2.value = document.form.mail.options[document.form.mail.selectedIndex].value;
+		//메일2 값은  메일의 옵션값이 들어감
+	} 
+}
+function check() {
+	if(document.form.name.value==""){
+		alert("이름을 입력하세요.");
+		document.form.name.focus();
+	}else if(document.form.password.value==""){
+		alert("비밀번호를 입력하세요.");
+		document.form.name.focus();
+	}else if(document.form.password_re.value==""){
+		alert("확인비밀번호를 입력하세요.");
+		document.form.password_re.focus();
+	}else if(!(document.form.password.value==document.form.password_re.value)){
+		alert("비밀번호를 동일하게 입력하세요.");
+		document.form.password_re.focus();
+	}else{
+		document.form.submit();
 	}
 }
 </script>
@@ -25,7 +50,7 @@ function mail_cng() {
 <%@include file="DBconn.jsp" %>
 <h2>회원 가입 등록 화면</h2><hr/>
 <form name="form" method="post" action="addMember_process.jsp">
-<table border="3">
+<table border="3" style="margin: 0 auto; width: 600px; height: 300px; ">
 <tr>
 <th>아이디</th>
 <%
@@ -70,7 +95,7 @@ if(rs.next()){
 <tr>
 <th>생 일</th>
 <td>
-<input type="text" name="birth1" size="7">년
+<input type="number" min="1960" max="2021" name="birth1" value=<%=2020 %> size="7">년
 <select name="birth2">
 <option value="1">1</option>
 <option value="2">2</option>
@@ -103,28 +128,35 @@ if(rs.next()){
 <tr>
 <th>이메일</th>
 <td>
-<input type="text" name="mail1" value="이메일">@<input type="text" name="mail2" disabled>
-<select name="mail_cng" onchange="mail_cng()" >
-<option value="">선택하세요</option>
+<input type="text" name="mail1" value="이메일"> 
+@ <input type="text" name="mail2" value="" disabled>
+<select name="mail" onchange="mail_chang()">
+<option value="0">선택하세요</option>
+<option value="9">직접입력</option>
 <option value="gmail.com">gmail.com</option>
+<option value="daum.net">daum.net</option>
 <option value="naver.com">naver.com</option>
+<option value="hotmail.com">hotmail.com</option>
+<option value="nate.com">nate.com</option>
 </select>
 </td>
 </tr>
 
 <tr>
-<th></th>
-<td></td>
+<th>연락처</th>
+<td><input type="text" name="phone" size="30"></td>
 </tr>
 
 <tr>
-<th></th>
-<td></td>
+<th>주소</th>
+<td><input type="text" name="address" size="30"></td>
 </tr>
 
 <tr>
-<th></th>
-<td colspan="2"></td>
+<td colspan="2" id="btn">
+<input type="button" value="등록" onclick="javascript:check()" class="a">
+<input type="reset" value="취소" class="a">
+</td>
 </tr>
 </table>
 </form>
