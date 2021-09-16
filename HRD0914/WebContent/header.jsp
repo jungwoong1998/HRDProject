@@ -17,6 +17,13 @@ nav a{text-decoration: none;}
 section{height: 75%;}
 section img{position: relative; left: 30px; top: 5px; height: 98%; width: 90%;}	
 footer{height: 5%; background-color: #bdbdbd; line-height: 30px; text-align: center;}
+
+a{text-decoration: none;}
+#btn{text-align: center;}
+.ta{background-color:#C2C0C0;}
+.a{width: 100px; height: 30px;}
+h2{text-align: center; font-family: sans-serif; line-height: 40px;}
+p{padding-left: 19%;}
 </style>
 </head>
 <body>

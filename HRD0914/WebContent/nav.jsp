@@ -10,8 +10,8 @@
 <li>Home</li>
 <li>로그인</li>
 <a href="addMember.jsp"><li>회원가입</a></li>
-<li>상품등록</li>
-<li>회원목록</li>
+<a href="addProduct.jsp"><li>상품등록</li>
+<a href="selectMember.jsp"><li>회원목록</a></li>
 <li>상품목록</li>
 <li>홈으로</li>
 </ul>
