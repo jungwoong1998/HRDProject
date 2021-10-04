@@ -1,19 +1,25 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 </head>
 <body>
-<ul>
-<li>Home</li>
-<li>로그인</li>
-<a href="addMember.jsp"><li>회원가입</a></li>
-<a href="addProduct.jsp"><li>상품등록</li>
-<a href="selectMember.jsp"><li>회원목록</a></li>
-<li>상품목록</li>
-<li>홈으로</li>
-</ul>
+<div id="u1">
+	<ul class="u1">
+		<li>Home</li>
+	</ul>
+</div>
+<div>
+	<ul class="u2_i">
+		<li class="u2">로그인</li>
+		<li class="u2">회원가입</li>
+		<li class="u2">상품등록</li>
+		<li class="u2">회원목록</li>
+		<li class="u2">상품목록</li>
+		<li class="u2">홈으로</li>
+	</ul>
+</div>
 </body>
 </html>
