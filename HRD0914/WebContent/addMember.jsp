@@ -1,44 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*" %>    
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>add화면</title>
+<title>회원가입 화면</title>
 <script type="text/javascript">
-function mail_chang() {
-	if(document.form.mail.options[document.form.mail.selectedIndex].value=='0'){
+function mail_change() {
+	if(document.form.mails.options[document.form.mails.selectedIndex].value='0'){
 		document.form.mail2.disabled = true;
-		document.form.mail2.value = "";
-		//인덱스 0번에 해당하는 것에 값이 들어가면 메일2은 비활성화됨
+		document.form.mail2.value =="";
 	}
-	if(document.form.mail.options[document.form.mail.selectedIndex].value=='9'){
+	if(document.form.mails.options[document.form.mails.selectedIndex].value='9'){
 		document.form.mail2.disabled = false;
-		document.form.mail2.value = "";
+		document.form.mail2.value =="";
 		document.form.mail2.focus();
-		//인덱스 9번에 해당하는 것에 값이 들어가면 메일2은 활성화되고 포커스됨
 	}else{
 		document.form.mail2.disabled = true;
-		document.form.mail2.value = document.form.mail.options[document.form.mail.selectedIndex].value;
-		//메일2 값은  메일의 옵션값이 들어감
-	} 
-}
-function check() {
-	if(document.form.name.value==""){
-		alert("이름을 입력하세요.");
-		document.form.name.focus();
-	}else if(document.form.password.value==""){
-		alert("비밀번호를 입력하세요.");
-		document.form.name.focus();
-	}else if(document.form.password_re.value==""){
-		alert("확인비밀번호를 입력하세요.");
-		document.form.password_re.focus();
-	}else if(!(document.form.password.value==document.form.password_re.value)){
-		alert("비밀번호를 동일하게 입력하세요.");
-		document.form.password_re.focus();
-	}else{
-		document.form.submit();
+		document.form.mail2.value = document.form.mails.options[document.form.mails.selectedIndex].value;
 	}
 }
 </script>
@@ -48,25 +28,23 @@ function check() {
 <nav><%@include file="nav.jsp" %></nav>
 <section>
 <%@include file="DBconn.jsp" %>
-<h2>회원 가입 등록 화면</h2><hr/>
-<form name="form" method="post" action="addMember_process.jsp">
-<table border="3" style="margin: 0 auto; width: 600px; height: 300px; ">
+<h1>회원 가입 등록 화면</h1><hr/>
+<form name="form" method="post" action="addMemberProcess.jsp">
+<table border="3">
 <tr>
 <th>아이디</th>
 <%
 PreparedStatement pstmt=null;
 ResultSet rs=null;
 int idx=0;
-
-String sql="select max(id) from member0914";
+String sql="select max(id) from member1004";
 pstmt=conn.prepareStatement(sql);
 rs=pstmt.executeQuery();
-
 if(rs.next()){
 	idx = rs.getInt(1)+1;
 }
 %>
-<td><input type="text" name="id" value="<%=idx %>">(마지막번호+1)</td>
+<td><input type="text" name="id" value="<%=idx %>"></td>
 </tr>
 
 <tr>
@@ -128,9 +106,9 @@ if(rs.next()){
 <tr>
 <th>이메일</th>
 <td>
-<input type="text" name="mail1" value="이메일"> 
-@ <input type="text" name="mail2" value="" disabled>
-<select name="mail" onchange="mail_chang()">
+<input type="text" name="mail1" value="이메일" onfocus="this.value='';"> 
+@ <input type="text" name="mail2" disabled>
+<select name="mails" onchange="mail_change()">
 <option value="0">선택하세요</option>
 <option value="9">직접입력</option>
 <option value="gmail.com">gmail.com</option>
